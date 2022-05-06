@@ -1,0 +1,31 @@
+<h1>Upload your documents here<h1>
+<%= form_with(model: @document, local: true) do |form| %>
+    <% if document.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(document.errors.count, "error") %> prohibited this post from being saved:</h2>
+ 
+        <ul>
+          <% document.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+ 
+ 
+    <div class="field">
+      <%= form.label :invoice %>
+      <%= form.file_field :invoice %>
+    </div>
+ 
+ 
+    <div class="field">
+      <%= form.label :files %>
+      <%= form.file_field :files, multiple: true %>
+    </div>
+ 
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+ 
